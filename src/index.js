@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Paint from './components/Paint';
+import Playground from './components/Playground';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
@@ -12,9 +12,7 @@ import * as serviceWorker from './serviceWorker';
 // );
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Paint />,
-  </React.StrictMode>,
+    <Playground />,
   document.getElementById('root')
 );
 
@@ -26,3 +24,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+// import Playground from './components/Playground'; 
