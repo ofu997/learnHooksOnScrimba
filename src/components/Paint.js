@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Canvas from './Canvas';
 import ColorPicker from './ColorPicker';
 import Name from './Name';
+import WindowSize from './WindowSize';
 
 export default function Paint() {
   const [colors, setColors] = useState([]);
@@ -37,7 +38,8 @@ export default function Paint() {
             height={window.innerHeight}
           />
         )}
+        <WindowSize />
       </div>
     </header>
-  )
+  );
 }
