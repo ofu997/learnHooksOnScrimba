@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Canvas from './Canvas';
 import ColorPicker from './ColorPicker';
 import Name from './Name';
+import WindowSize from './WindowSize';
 
 export default function Paint() {
   const [colors, setColors] = useState([]);
@@ -21,23 +22,24 @@ export default function Paint() {
   useEffect(getColors, []); 
 
   return (
-    <header style={{ borderTop: `10px solid ${activeColor}` }}>
-      <div className="app">
+    <div className="app">
+      <header style={{ borderTop: `10px solid ${activeColor}` }}>
         <Name />
-      </div>
       <div style={{ marginTop: 10 }}>
         <ColorPicker
           colors={colors}
           activeColor={activeColor}
           setActiveColor={setActiveColor}
         />
+      </div>
+    </header>
         {activeColor && (
           <Canvas
             color={activeColor}
             height={window.innerHeight}
           />
         )}
+        <WindowSize /> 
       </div>
-    </header>
   )
 }

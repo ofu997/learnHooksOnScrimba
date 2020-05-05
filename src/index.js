@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Paint from './components/Paint';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+
 // ReactDOM.render(
 //   <React.StrictMode>
 //     <App />
@@ -12,8 +13,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <Playground /> */}
-    <Paint />
+    <Paint />,
   </React.StrictMode>,
   document.getElementById('root')
 );
