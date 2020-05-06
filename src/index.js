@@ -26,3 +26,4 @@ ReactDOM.render(
 serviceWorker.unregister();
 
 // import Playground from './components/Playground'; 
+// import Paint from './components/Paint';
