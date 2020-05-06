@@ -14,6 +14,10 @@ body {
   margin: 0;
 }
 
+fieldset {
+  border: none !important;
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -63,6 +67,7 @@ header > div {
   background: none;
   cursor: pointer;
   font-size: 2rem;
+  margin: 222px;
 }
 
 .color-picker {
@@ -79,7 +84,7 @@ header > div {
   width: 1.5rem;
   height: 1.5rem;
   margin: 5px 15px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   transition: 0.3s;
 }
 .color-picker label {

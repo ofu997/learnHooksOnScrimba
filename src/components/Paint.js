@@ -1,25 +1,31 @@
 import randomColor from 'randomcolor';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Canvas from './Canvas';
 import ColorPicker from './ColorPicker';
 import Name from './Name';
+import RefreshButton from './RefreshButton';
 import WindowSize from './WindowSize';
 
 export default function Paint() {
   const [colors, setColors] = useState([]);
   const [activeColor, setActiveColor] = useState(null);
-  const getColors = () => {
+
+  // wrap it in a useCallback so we don't recreate this function on every re-render
+  // , []keeps the same function instance across renders
+  const getColors = useCallback(() => {
     const baseColor = randomColor().slice(1);
     fetch(`https://www.thecolorapi.com/scheme?hex=${baseColor}&mode=monochrome`)
     .then(res => res.json())
     .then(res => {
       setColors(res.colors.map(color => color.hex.value))
       setActiveColor(res.colors[0].hex.value)
-    })
-  }
+    }, [])
+  })
 
   // empty array 2nd argument only runs on first render
   useEffect(getColors, []); 
+  // infinite loop of color
+  // useEffect(getColors); 
 
   const headerRef = useRef({ offsetHeight: 0 }); 
 
@@ -27,14 +33,18 @@ export default function Paint() {
     <div className="app">
       <header ref={ headerRef } style={{ borderTop: `10px solid ${activeColor}` }}>
         <Name />
-        <div style={{ marginTop: 10 }}>
+        <div style={{ marginLeft: "25%", marginTop: 10, display: "flex" }}>
           <ColorPicker
             colors = { colors }
             activeColor = { activeColor }
             setActiveColor = { setActiveColor }
           />
+          <RefreshButton 
+            cb = { getColors }
+          />
         </div>
       </header>
+
         {
           activeColor && (
             <Canvas
